@@ -1,7 +1,7 @@
 const express = require('express')
 const bodyParser = require('body-parser')
 const app = express()
-
+const nodemon = require('nodemon')
 
 //server
 app.use(bodyParser.urlencoded({extended: true}))

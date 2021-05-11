@@ -1,13 +1,13 @@
 const mysql = require('mysql')
 
 const conn = mysql.createConnection({
-    host: 'localhost:84',
+    host: 'localhost',
     user: 'root',
     password: '',
-    database: 'absen_siswa'
+    database: 'absen-siswa'
 })
 conn.connect((err) => {
-    if(conn) throw err
+    if(err) throw err
     console.log('mysql terkoneksi')
 })
 
