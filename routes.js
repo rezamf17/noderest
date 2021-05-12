@@ -13,6 +13,10 @@ module.exports = function(app){
     .get(jsonku.tampildataberdasarkanid)
     app.route('/tambah')
     .post(jsonku.tambahData)
+    app.route('/ubah')
+    .put(jsonku.ubahData)
+    app.route('/hapus')
+    .delete(jsonku.hapusData)
 }
 
     

@@ -54,7 +54,7 @@ exports.tambahData = function (req, res) {
 }
 
 //mengubah data berdasarkan id/nis
-exports.ubahData = function(res, req){
+exports.ubahData = function(req, res){
     const nis = req.body.nis
     const nama = req.body.nama
     const alasan = req.body.alasan
@@ -67,12 +67,28 @@ exports.ubahData = function(res, req){
     const jurusan = req.body.jurusan
     const masuk = req.body.masuk
 
-    connection.query("update absen_siswa set nama=?, alasan=?, dari_tanggal=?, sampai_tanggal=?, waktu_submit=?, ais=?, status=?, kelas=?, jurusan=?, masuk=?", [nis, nama, alasan, dari_tgl, sampai_tgl, waktu, ais, status, kelas, jurusan, masuk],
+    connection.query("UPDATE absen_siswa SET nama=?, alasan=?, dari_tanggal=?, sampai_tanggal=?, waktu_submit=?, ais=?, status=?, kelas=?, jurusan=?, masuk=? WHERE nis=?", [nama, alasan, dari_tgl, sampai_tgl, waktu, ais, status, kelas, jurusan, masuk, nis],
     function(error, rows, fields){
         if(error){
             console.log(error)
         }else{
             response.ok("Berhasil mengedit data", res)
+        }
+    }
+    )
+}
+
+
+//menghapus data berdasarkan nis/id
+exports.hapusData = function(req, res) {
+    const nis = req.body.nis
+
+    connection.query("DELETE FROM absen_siswa where nis=?", [nis],
+    function(error, rows, fields){
+        if(error){
+            console.log(error)
+        }else{
+            response.ok("Berhasil menghapus data", res)
         }
     }
     )
